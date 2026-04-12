@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Trikal Travels</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f7f6;
+            font-family: 'Poppins', sans-serif;
+            padding-bottom: 100px;
+        }
+
+        .admin-header {
+            background: #1a1a1a;
+            color: white;
+            padding: 30px 0;
+        }
+
+        /* Floating Action Button optimized for mobile thumb reach */
+        .add-btn-float {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #ffc107;
+            border: none;
+            font-size: 35px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .add-btn-float:active {
+            transform: scale(0.9);
+        }
+
+        /* Responsive Plan Item Cards */
+        .plan-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 6px solid #ffc107;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Modal Overlay - Fullscreen Blur */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            padding: 25px;
+        }
+
+        .x-small {
+            font-size: 0.8rem;
+        }
+
+        /* Mobile-first text truncation */
+        .text-truncate-mobile {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            white-space: normal;
+        }
+
+        /* Button Loading State */
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .spinner-mini {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="admin-header text-center shadow">
+        <div class="container">
+            <h1 class="h3 fw-bold mb-1">Admin Control Panel</h1>
+            <p class="mb-0 opacity-75 small">Manage Trikal Tour & Travel Packages</p>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h5 fw-bold mb-0">Active Travel Plans</h2>
+            <button class="btn btn-sm btn-outline-dark" onclick="location.href='index.html'">View Site</button>
+        </div>
+
+        <div id="admin-plans-list">
+        </div>
+    </div>
+
+    <button class="add-btn-float" onclick="toggleModal('add-plan-modal')" aria-label="Add New Plan">+</button>
+
+    <div id="add-plan-modal" class="modal-overlay">
+        <div class="modal-card shadow-lg">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h5 fw-bold mb-0">1. Create New Plan</h3>
+                <span class="badge bg-warning text-dark rounded-pill">Step 1 of 2</span>
+            </div>
+            <div class="mb-2">
+                <label class="small fw-bold">Plan Name</label>
+                <input type="text" id="planName" class="form-control form-control-lg fs-6"
+                    placeholder="e.g. Goa Beach Tour">
+            </div>
+            <div class="mb-2">
+                <label class="small fw-bold">Description</label>
+                <textarea id="planDesc" class="form-control fs-6" rows="3"
+                    placeholder="Detailed itinerary..."></textarea>
+            </div>
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <label class="small fw-bold">Price (₹)</label>
+                    <input type="number" id="planPrice" class="form-control fs-6" placeholder="2999">
+                </div>
+                <div class="col-6">
+                    <label class="small fw-bold">Short Msg</label>
+                    <input type="text" id="planMsg" class="form-control fs-6" placeholder="Limited Offer!">
+                </div>
+            </div>
+            <button id="createPlanBtn" class="btn btn-warning w-100 fw-bold py-3 rounded-pill" 
+                onclick="createPlan()" type="button">
+                <span id="createPlanText">Next: Upload Photos</span>
+            </button>
+            <button class="btn btn-link text-muted w-100 mt-2 text-decoration-none"
+                onclick="toggleModal('add-plan-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <div id="upload-photo-modal" class="modal-overlay">
+        <div class="modal-card shadow-lg text-center">
+            <div class="mb-4">
+                <h3 class="h5 fw-bold mb-1">2. Upload Photos</h3>
+                <p class="text-muted small">Plan ID: <span id="carriedPlanId" class="badge bg-dark"></span></p>
+            </div>
+
+            <div class="mb-4">
+                <div class="p-4 border border-2 border-dashed rounded-4 bg-light">
+                    <input type="file" id="photoFiles" class="form-control mb-2" multiple accept="image/*">
+                    <p class="x-small text-danger fw-bold mb-0">Exactly 2 high-quality photos required.</p>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button id="uploadPhotosBtn" class="btn btn-dark w-100 fw-bold py-3 rounded-pill" 
+                    onclick="uploadPhotos()" type="button">
+                    <span id="uploadPhotosText">Finish & Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://localhost:8080";
+        let currentPlanId = null;
+
+        /**
+         * Load plans with responsive card layout
+         */
+        async function loadAdminPlans() {
+            try {
+                const res = await fetch(`${API_BASE}/allPlans`);
+                if (!res.ok) throw new Error("Fetch failed");
+
+                const plans = await res.json();
+                const list = document.getElementById('admin-plans-list');
+                list.innerHTML = '';
+
+                if (plans.length === 0) {
+                    list.innerHTML = '<div class="text-center py-5 text-muted">No active plans found.</div>';
+                    return;
+                }
+
+                plans.forEach(plan => {
+                    list.innerHTML += `
+                        <div class="plan-item shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div style="flex: 1;">
+                                    <h5 class="fw-bold mb-0 text-dark">${plan.planDetails.name}</h5>
+                                    <p class="text-warning fw-bold mb-0">₹${plan.planDetails.price}</p>
+                                </div>
+                                <button class="btn btn-danger btn-sm rounded-pill px-3" onclick="deletePlan(${plan.planDetails.id})">Delete</button>
+                            </div>
+                            <p class="mb-0 x-small text-muted text-truncate-mobile">${plan.planDetails.description}</p>
+                            <div class="mt-2 pt-2 border-top">
+                                <span class="x-small badge bg-light text-dark">Plan ID: ${plan.planDetails.id}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Error loading plans:", error);
+            }
+        }
+
+        async function createPlan() {
+            const btn = document.getElementById('createPlanBtn');
+            const btnText = document.getElementById('createPlanText');
+            const originalText = btnText.innerText;
+            
+            // Disable button and show loading state
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="spinner-mini"></span>Processing...';
+
+            const planData = {
+                name: document.getElementById('planName').value,
+                description: document.getElementById('planDesc').value,
+                price: parseFloat(document.getElementById('planPrice').value),
+                message: document.getElementById('planMsg').value
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/newplan`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(planData)
+                });
+
+                if (res.ok) {
+                    const savedPlan = await res.json();
+                    currentPlanId = savedPlan.id;
+                    document.getElementById('carriedPlanId').innerText = currentPlanId;
+                    
+                    // Clear form fields
+                    document.getElementById('planName').value = '';
+                    document.getElementById('planDesc').value = '';
+                    document.getElementById('planPrice').value = '';
+                    document.getElementById('planMsg').value = '';
+                    
+                    // Close and open modals
+                    toggleModal('add-plan-modal');
+                    toggleModal('upload-photo-modal');
+                } else {
+                    alert("Failed to create plan. Please try again.");
+                    btn.disabled = false;
+                    btnText.innerText = originalText;
+                }
+            } catch (error) { console.error(error); }
+        }
+
+        async function uploadPhotos() {
+            const fileInput = document.getElementById('photoFiles');
+            const files = fileInput.files;
+            const btn = document.getElementById('uploadPhotosBtn');
+            const btnText = document.getElementById('uploadPhotosText');
+            const originalText = btnText.innerText;
+
+            // Validation: Ensure 1 or 2 photos are selected
+            if (files.length === 0) {
+                alert("Please select at least one photo.");
+                return;
+            }
+            if (files.length > 2) {
+                alert("You can only upload a maximum of 2 photos per plan.");
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            // Disable button and show loading state
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="spinner-mini"></span>Uploading...';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/photos/add/${currentPlanId}`, {
+                    method: 'POST',
+                    body: formData 
+                });
+
+                if (res.ok) {
+                    alert("Plan and photos added successfully!");
+                    location.reload();
+                } else {
+                    const errorMsg = await res.text();
+                    alert("Upload failed: " + errorMsg);
+                    btn.disabled = false;
+                    btnText.innerText = originalText;
+                }
+            } catch (error) {
+                console.error("Photo upload failed:", error);
+                alert("Error uploading photos: " + error.message);
+                btn.disabled = false;
+                btnText.innerText = originalText;
+            }
+        }
+        async function deletePlan(id) {
+            if (confirm(`Delete Plan #${id}?`)) {
+                try {
+                    const res = await fetch(`${API_BASE}/deletePlan/${id}`, { method: 'DELETE' });
+                    if (res.ok) loadAdminPlans();
+                } catch (error) { console.error(error); }
+            }
+        }
+
+        document.getElementById('photoFiles').addEventListener('change', function () {
+            const fileCount = this.files.length;
+            const feedback = this.nextElementSibling; 
+            if (fileCount > 2) {
+                alert("You have selected " + fileCount + " files. Only the first 2 will be accepted.");
+                feedback.innerText = "Too many files! Please select exactly 2.";
+                feedback.classList.replace('text-danger', 'text-warning');
+            } else if (fileCount > 0) {
+                feedback.innerText = fileCount + " files selected. (Max 2 allowed)";
+                feedback.classList.replace('text-danger', 'text-success');
+            }
+        });
+
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        window.onload = loadAdminPlans;
+    </script>
+</body>
+
+</html>

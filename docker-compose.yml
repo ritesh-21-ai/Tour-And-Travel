@@ -1,0 +1,19 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: travel-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Ritesh21@
+      POSTGRES_DB: tour_and_travel
+    ports:
+      - "5432:5432"
+    volumes:
+      # Use the named volume here
+      - tour:/var/lib/postgresql/data
+  
+
+volumes:
+  # Define the named volume at the root level
+  tour:

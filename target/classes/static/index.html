@@ -1,0 +1,1015 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trikal Tour & Travels | Premium All-India Packages</title>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --accent-yellow: #ffb703;
+            --whatsapp-green: #25d366;
+            --phone-blue: #007bff;
+            --text-gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fc;
+            overflow-x: hidden;
+            color: #2d2d2d;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        /* --- Top Bar & Navbar --- */
+        .top-bar {
+            background: var(--primary-dark);
+            color: white;
+            font-size: 0.85rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            color: var(--primary-dark) !important;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .nav-link {
+            color: var(--primary-dark) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- Parallax Hero Section --- */
+        .hero-section {
+            height: 90vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.8)),
+                url('vn90b1p12qxg3x0zzwyl_compressed.avif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            background: rgba(255, 183, 3, 0.2);
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease both;
+        }
+
+        .display-1 {
+            font-weight: 900;
+            letter-spacing: -2px;
+            animation: slideUp 1.2s ease both;
+        }
+
+        .hero-text {
+            font-family: 'Inter';
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            animation: slideUp 1.4s ease both;
+        }
+
+        /* --- Seamless Marquee --- */
+        .marquee-section {
+            background: var(--accent-yellow);
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: scrollText 30s linear infinite;
+        }
+
+        .marquee-item {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- The Bus Journey --- */
+        .journey-quotes {
+            background-color: var(--primary-dark);
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+            margin-top: -40px;
+        }
+
+        .road-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(90deg, #6c757d, #6c757d 20px, transparent 20px, transparent 40px);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .moving-bus {
+            position: absolute;
+            top: calc(50% - 30px);
+            left: -10%;
+            font-size: 3rem;
+            color: var(--accent-yellow);
+            z-index: 3;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.8));
+            animation: busDrive 16s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+        }
+
+        .stop-dot {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 5px solid var(--accent-yellow);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            top: 11px;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(255, 183, 3, 0.6);
+        }
+
+        .quote-text {
+            color: white;
+            font-style: italic;
+            opacity: 0.7;
+            margin-top: 25px;
+            font-family: 'Inter';
+        }
+
+        /* --- Global Titles --- */
+        .section-tagline {
+            color: var(--accent-yellow);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 50px;
+        }
+
+        /* --- Travel Cards --- */
+        .travel-card {
+            border: none;
+            border-radius: 24px;
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .travel-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-img-container {
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+            background: #e9ecef;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel-img.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #fff;
+            transform: scale(1.4);
+        }
+
+        .price-tag {
+            background: var(--primary-dark);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px 0 0 50px;
+            font-weight: 800;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            z-index: 10;
+        }
+
+        .mobile-truncate {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- Customization Feature Cards --- */
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-bottom: 4px solid var(--accent-yellow);
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 183, 3, 0.15);
+            color: var(--accent-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px auto;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--accent-yellow);
+            color: white;
+        }
+
+        /* --- Review Cards --- */
+        .reviews-section {
+            background: var(--primary-dark);
+            color: white;
+            position: relative;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .review-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Buttons --- */
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green) !important;
+            color: white !important;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba56 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-outline-dark {
+            transition: 0.3s;
+            border-width: 2px;
+        }
+
+        .btn-outline-dark:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- About Section --- */
+        .about-img-box {
+            position: relative;
+            padding-right: 30px;
+            padding-bottom: 30px;
+        }
+
+        .img-main {
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-float {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 55%;
+            border-radius: 20px;
+            border: 10px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: floatBobY 4s infinite alternate;
+        }
+
+        .exp-badge {
+            position: absolute;
+            top: 30px;
+            left: -20px;
+            background: var(--accent-yellow);
+            color: var(--primary-dark);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 800;
+            box-shadow: 0 15px 30px rgba(255, 183, 3, 0.4);
+            animation: floatBobX 5s infinite alternate;
+        }
+
+        /* --- Floating Contact Hub --- */
+        .contact-hub {
+            position: fixed;
+            bottom: 30px;
+            left: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 3000;
+        }
+
+        .hub-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hub-btn:hover {
+            transform: scale(1.15) translateY(-5px);
+            color: white;
+        }
+
+        .btn-wa {
+            background: var(--whatsapp-green);
+        }
+
+        .btn-ph {
+            background: var(--phone-blue);
+        }
+
+        /* --- Modals --- */
+        .admin-overlay,
+        .detail-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(15px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+        }
+
+        .admin-box,
+        .detail-box {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        /* --- Animations --- */
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatBobY {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes floatBobX {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-15px);
+            }
+        }
+
+        @keyframes busDrive {
+            0% {
+                left: -10%;
+            }
+
+            15%,
+            25% {
+                left: 16%;
+            }
+
+            45%,
+            55% {
+                left: 49%;
+            }
+
+            75%,
+            85% {
+                left: 82%;
+            }
+
+            100% {
+                left: 110%;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive CSS Fixes --- */
+        @media (max-width: 991px) {
+            .display-1 {
+                font-size: 3.5rem;
+            }
+
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .display-5 {
+                font-size: 2rem;
+            }
+
+            .about-img-box {
+                margin-bottom: 60px;
+                padding-right: 15px;
+            }
+
+            .img-float {
+                width: 50%;
+                right: 0;
+                bottom: -30px;
+            }
+
+            .exp-badge {
+                padding: 15px;
+                top: 10px;
+                left: -10px;
+                font-size: 0.9rem;
+            }
+
+            .hero-section {
+                height: auto;
+                min-height: 80vh;
+                padding: 100px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .display-1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+            }
+
+            .contact-hub {
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .hub-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .moving-bus {
+                font-size: 2rem;
+                top: calc(50% - 20px);
+            }
+
+            .quote-text {
+                font-size: 0.8rem;
+            }
+
+            .stop-dot {
+                width: 15px;
+                height: 15px;
+                top: 9px;
+            }
+
+            .marquee-item {
+                font-size: 1.2rem;
+                margin: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-4">
+                <span><i class="fas fa-map-marker-alt text-warning me-2"></i> Serving All Over India</span>
+                <span><i class="fas fa-envelope text-warning me-2"></i> info@trikaltravels.com</span>
+            </div>
+            <div class="d-flex gap-3">
+                <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fs-3" href="#">TRIKAL <span class="text-warning">TRAVELS</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars fs-2 text-dark"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#customizations">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-dark fw-bold rounded-pill px-4 py-2 shadow" onclick="toggleAdminPopup()">
+                            <i class="fas fa-user-shield me-2 text-warning"></i> ADMIN
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="hero-tagline"><i class="fas fa-plane-departure me-2"></i> Your Journey, Our
+                        Passion</span>
+                    <h1 class="display-1 mb-4">Discover the Colors of <br><span
+                            style="color: var(--accent-yellow);">Incredible India</span></h1>
+                    <p class="hero-text mb-5">From the snowy peaks of the Himalayas to the backwaters of Kerala. We
+                        craft premium, safe, and unforgettable travel experiences tailored just for you.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3" style="animation: slideUp 1.6s ease both;">
+                        <a href="#services"
+                            class="btn btn-warning btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg text-dark">View
+                            Packages</a>
+                        <a href="tel:9760444241" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-bold"><i
+                                class="fas fa-phone me-2"></i> Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="marquee-section" style="margin-top: 20px;">
+        <div class="marquee-content">
+            <div class="marquee-item"><i class="fas fa-star"></i> Explore Rajasthan</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Magical Kerala</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Kashmir Valleys</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Char Dham Yatra</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Goa Escapes</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Explore Rajasthan</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Magical Kerala</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Kashmir Valleys</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Char Dham Yatra</div>
+            <div class="marquee-item"><i class="fas fa-star"></i> Goa Escapes</div>
+        </div>
+    </div>
+
+    <section class="journey-quotes" style="margin-top: 2px;">
+        <div class="road-track"></div>
+        <i class="fas fa-bus-alt moving-bus"></i>
+        <div class="container position-relative z-2">
+            <div class="row text-center px-2">
+                <div class="col-4">
+                    <div class="stop-dot"></div>
+                    <p class="quote-text">"Travel makes one modest. You see what a tiny place you occupy in the world."
+                    </p>
+                </div>
+                <div class="col-4">
+                    <div class="stop-dot"></div>
+                    <p class="quote-text">"Collect moments, not things. Leave the planning to the experts."</p>
+                </div>
+                <div class="col-4">
+                    <div class="stop-dot"></div>
+                    <p class="quote-text">"To travel is to discover that everyone is wrong about other countries."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="customizations" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center reveal mb-5">
+                <span class="section-tagline text-dark"><i class="fas fa-sliders-h"></i> Tailor-Made For You</span>
+                <h2 class="section-title display-5 mb-3">Your Journey, Your Rules</h2>
+                <p class="text-muted fs-5 max-w-700 mx-auto">We know every traveler is unique. That's why we give you
+                    full control. Request these customizations when you contact us to book your package.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-hotel"></i></div>
+                        <h4 class="fw-bold mb-3">Accommodation</h4>
+                        <p class="text-muted small">Choose your comfort level. Upgrade to 4-star or 5-star luxury
+                            resorts, or opt for cozy, budget-friendly homestays.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-car-side"></i></div>
+                        <h4 class="fw-bold mb-3">Vehicle Choice</h4>
+                        <p class="text-muted small">Select the perfect ride for your group size. Options include Sedans,
+                            Innova SUVs, or spacious Tempo Travellers.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                        <h4 class="fw-bold mb-3">Dietary Needs</h4>
+                        <p class="text-muted small">Strict diet? No problem. We arrange specialized meals including pure
+                            Veg, Jain, Halal, or continental food on request.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h4 class="fw-bold mb-3">Flexible Itinerary</h4>
+                        <p class="text-muted small">Want to skip a monument or stay an extra day in the mountains? Your
+                            schedule is fully adjustable before the trip.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center reveal mb-5">
+                <span class="section-tagline text-dark"><i class="fas fa-gem"></i> Curated Experiences</span>
+                <h2 class="section-title display-4">Our Premium Packages</h2>
+            </div>
+            <div id="cards-grid" class="row g-5">
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section py-5">
+        <div class="container py-5">
+            <div class="text-center reveal mb-5">
+                <span class="section-tagline text-white"><i class="fas fa-heart text-danger"></i> Wall of Love</span>
+                <h2 class="display-4 fw-bold text-white mb-3">What Our Travelers Say</h2>
+                <p class="text-white-50 fs-5">Don't just take our word for it. Join thousands of happy explorers.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-white-50 fst-italic mb-4">"Absolutely flawless trip to Rajasthan. We customized
+                            our hotels to 5-star, and the driver was so polite. The whole itinerary was managed
+                            perfectly!"</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Anjali M.</h6>
+                                <small class="text-warning">Mumbai, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-white-50 fst-italic mb-4">"Booked the Char Dham yatra for my elderly parents.
+                            Trikal ensured they had comfortable transport and Jain food throughout. Highly recommended."
+                        </p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Rahul S.</h6>
+                                <small class="text-warning">Delhi, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-white-50 fst-italic mb-4">"The Kerala backwaters tour was a dream. Transparent
+                            pricing with no hidden charges, and 24/7 WhatsApp support just as promised."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Priya K.</h6>
+                                <small class="text-warning">Bangalore, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-white-50 fst-italic mb-4">"We customized our Kashmir package to include more snow
+                            activities instead of temple visits. They accommodated every request with a smile!"</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Vikram D.</h6>
+                                <small class="text-warning">Pune, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-white-50 fst-italic mb-4">"Best travel agency I've used in years. The Innova
+                            provided was sparkling clean, and the driver acted as a brilliant local guide for us."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Sneha R.</h6>
+                                <small class="text-warning">Ahmedabad, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="review-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-white-50 fst-italic mb-4">"From Delhi to Goa, the entire itinerary was incredibly
+                            smooth. Being able to reach them on WhatsApp anytime gave us great peace of mind."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Aman T.</h6>
+                                <small class="text-warning">Chandigarh, India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5 bg-light border-top">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 reveal">
+                    <div class="about-img-box">
+                        <img src="vn90b1p12qxg3x0zzwyl_compressed.avif"
+                            class="img-fluid img-main" alt="Taj Mahal Tour">
+                        <img src="photo-1493246507139-91e8fad9978e.avif"
+                            class="img-fluid img-float" alt="Mountain Tour">
+                        <div class="exp-badge">
+                            <h2 class="mb-0">10+</h2>
+                            <span class="small text-uppercase">Years of<br>Trust</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5 reveal">
+                    <span class="section-tagline justify-content-start text-dark"><i class="fas fa-shield-alt"></i> Safe
+                        & Reliable</span>
+                    <h2 class="fw-bold mb-4 display-5">Creating Pan-India Memories</h2>
+                    <p class="text-muted fs-5 mb-4">Trikal Tour and Travels is your ultimate travel partner. We don’t
+                        just book trips; we craft complete experiences. From the arid deserts of the west to the lush
+                        green hills of the north, we provide premium vehicles, expert guides, and 24/7 support.</p>
+
+                    <ul class="list-unstyled mb-5">
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-3 fs-4"></i> Transparent,
+                            fixed pricing. No hidden surges.</li>
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-3 fs-4"></i> Vetted,
+                            professional, and courteous drivers.</li>
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-3 fs-4"></i> Fully
+                            customizable itineraries for families.</li>
+                    </ul>
+
+                    <div class="d-flex align-items-center p-3 rounded-4 shadow-sm bg-white"
+                        style="border-left: 5px solid var(--accent-yellow);">
+                        <div class="bg-light rounded-circle p-3 me-3 text-dark">
+                            <i class="fas fa-phone fa-flip-horizontal fs-3"></i>
+                        </div>
+                        <div>
+                            <span class="d-block small text-muted fw-bold text-uppercase">24/7 Booking & Support</span>
+                            <a href="tel:9760444241" class="text-dark fw-bold fs-3 text-decoration-none">+91 97604
+                                44241</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-hub">
+        <a href="https://wa.me/919760444241" class="hub-btn btn-wa" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:9760444241" class="hub-btn btn-ph" title="Call Us Directly">
+            <i class="fas fa-phone fa-flip-horizontal"></i>
+        </a>
+    </div>
+
+    <div id="admin-popup" class="admin-overlay">
+        <div class="admin-box text-center">
+            <div class="mb-3 text-warning" style="font-size: 3.5rem;"><i class="fas fa-user-lock"></i></div>
+            <h3 class="fw-bold mb-2">Admin Portal</h3>
+            <p class="text-muted small mb-4">Enter your secure access code to manage inventory.</p>
+            <input type="password" id="adminNumber"
+                class="form-control form-control-lg mb-4 rounded-pill text-center bg-light" placeholder="Secure Code">
+            <div class="d-grid gap-3">
+                <button class="btn btn-warning btn-lg fw-bold rounded-pill shadow" onclick="loginAdmin()">Login to
+                    Dashboard</button>
+                <button class="btn btn-link text-muted fw-bold text-decoration-none"
+                    onclick="toggleAdminPopup()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="detail-popup" class="detail-overlay" onclick="closeDetailOnOut(event)">
+        <div class="detail-box">
+            <div id="detail-content"></div>
+            <div class="d-grid mt-4">
+                <button class="btn btn-dark btn-lg rounded-pill fw-bold shadow" onclick="toggleDetailPopup()">Return to
+                    Packages</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = function () {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger once on load
+        });
+    </script>
+</body>
+
+</html>
